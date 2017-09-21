@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41DE1DF91F745FE10015882A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 41DE1DF81F745FE10015882A /* main.c */; };
+		41DE1E0C1F7460640015882A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 41DE1E0B1F7460640015882A /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		41DE1DF31F745FE10015882A /* CopyFiles */ = {
+		41DE1E061F7460640015882A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		41DE1DF51F745FE10015882A /* DataLab Manipulating Bits */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "DataLab Manipulating Bits"; sourceTree = BUILT_PRODUCTS_DIR; };
-		41DE1DF81F745FE10015882A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		41DE1E081F7460640015882A /* DataLab_Manipulating_Bits */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataLab_Manipulating_Bits; sourceTree = BUILT_PRODUCTS_DIR; };
+		41DE1E0B1F7460640015882A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		41DE1DF21F745FE10015882A /* Frameworks */ = {
+		41DE1E051F7460640015882A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		41DE1DEC1F745FE00015882A = {
+		41DE1DFF1F7460640015882A = {
 			isa = PBXGroup;
 			children = (
-				41DE1DF71F745FE10015882A /* DataLab Manipulating Bits */,
-				41DE1DF61F745FE10015882A /* Products */,
+				41DE1E0A1F7460640015882A /* DataLab_Manipulating_Bits */,
+				41DE1E091F7460640015882A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		41DE1DF61F745FE10015882A /* Products */ = {
+		41DE1E091F7460640015882A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				41DE1DF51F745FE10015882A /* DataLab Manipulating Bits */,
+				41DE1E081F7460640015882A /* DataLab_Manipulating_Bits */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		41DE1DF71F745FE10015882A /* DataLab Manipulating Bits */ = {
+		41DE1E0A1F7460640015882A /* DataLab_Manipulating_Bits */ = {
 			isa = PBXGroup;
 			children = (
-				41DE1DF81F745FE10015882A /* main.c */,
+				41DE1E0B1F7460640015882A /* main.c */,
 			);
-			path = "DataLab Manipulating Bits";
+			path = DataLab_Manipulating_Bits;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		41DE1DF41F745FE10015882A /* DataLab Manipulating Bits */ = {
+		41DE1E071F7460640015882A /* DataLab_Manipulating_Bits */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41DE1DFC1F745FE10015882A /* Build configuration list for PBXNativeTarget "DataLab Manipulating Bits" */;
+			buildConfigurationList = 41DE1E0F1F7460640015882A /* Build configuration list for PBXNativeTarget "DataLab_Manipulating_Bits" */;
 			buildPhases = (
-				41DE1DF11F745FE10015882A /* Sources */,
-				41DE1DF21F745FE10015882A /* Frameworks */,
-				41DE1DF31F745FE10015882A /* CopyFiles */,
+				41DE1E041F7460640015882A /* Sources */,
+				41DE1E051F7460640015882A /* Frameworks */,
+				41DE1E061F7460640015882A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "DataLab Manipulating Bits";
-			productName = "DataLab Manipulating Bits";
-			productReference = 41DE1DF51F745FE10015882A /* DataLab Manipulating Bits */;
+			name = DataLab_Manipulating_Bits;
+			productName = DataLab_Manipulating_Bits;
+			productReference = 41DE1E081F7460640015882A /* DataLab_Manipulating_Bits */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		41DE1DED1F745FE00015882A /* Project object */ = {
+		41DE1E001F7460640015882A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Ryan Vary";
 				TargetAttributes = {
-					41DE1DF41F745FE10015882A = {
+					41DE1E071F7460640015882A = {
 						CreatedOnToolsVersion = 6.4;
 					};
 				};
 			};
-			buildConfigurationList = 41DE1DF01F745FE00015882A /* Build configuration list for PBXProject "DataLab Manipulating Bits" */;
+			buildConfigurationList = 41DE1E031F7460640015882A /* Build configuration list for PBXProject "DataLab_Manipulating_Bits" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 41DE1DEC1F745FE00015882A;
-			productRefGroup = 41DE1DF61F745FE10015882A /* Products */;
+			mainGroup = 41DE1DFF1F7460640015882A;
+			productRefGroup = 41DE1E091F7460640015882A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				41DE1DF41F745FE10015882A /* DataLab Manipulating Bits */,
+				41DE1E071F7460640015882A /* DataLab_Manipulating_Bits */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		41DE1DF11F745FE10015882A /* Sources */ = {
+		41DE1E041F7460640015882A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41DE1DF91F745FE10015882A /* main.c in Sources */,
+				41DE1E0C1F7460640015882A /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		41DE1DFA1F745FE10015882A /* Debug */ = {
+		41DE1E0D1F7460640015882A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -167,7 +167,7 @@
 			};
 			name = Debug;
 		};
-		41DE1DFB1F745FE10015882A /* Release */ = {
+		41DE1E0E1F7460640015882A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -202,14 +202,14 @@
 			};
 			name = Release;
 		};
-		41DE1DFD1F745FE10015882A /* Debug */ = {
+		41DE1E101F7460640015882A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		41DE1DFE1F745FE10015882A /* Release */ = {
+		41DE1E111F7460640015882A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -219,24 +219,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		41DE1DF01F745FE00015882A /* Build configuration list for PBXProject "DataLab Manipulating Bits" */ = {
+		41DE1E031F7460640015882A /* Build configuration list for PBXProject "DataLab_Manipulating_Bits" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41DE1DFA1F745FE10015882A /* Debug */,
-				41DE1DFB1F745FE10015882A /* Release */,
+				41DE1E0D1F7460640015882A /* Debug */,
+				41DE1E0E1F7460640015882A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41DE1DFC1F745FE10015882A /* Build configuration list for PBXNativeTarget "DataLab Manipulating Bits" */ = {
+		41DE1E0F1F7460640015882A /* Build configuration list for PBXNativeTarget "DataLab_Manipulating_Bits" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41DE1DFD1F745FE10015882A /* Debug */,
-				41DE1DFE1F745FE10015882A /* Release */,
+				41DE1E101F7460640015882A /* Debug */,
+				41DE1E111F7460640015882A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 41DE1DED1F745FE00015882A /* Project object */;
+	rootObject = 41DE1E001F7460640015882A /* Project object */;
 }

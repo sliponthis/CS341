@@ -1,6 +1,6 @@
 //
 //  main.c
-//  DataLab Manipulating Bits
+//  DataLab_Manipulating_Bits
 //
 //  Created by Ryan Vary on 9/21/17.
 //  Copyright (c) 2017 Ryan Vary. All rights reserved.

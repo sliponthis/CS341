@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:DataLab Manipulating Bits.xcodeproj">
+      location = "self:DataLab_Manipulating_Bits.xcodeproj">
    </FileRef>
 </Workspace>
