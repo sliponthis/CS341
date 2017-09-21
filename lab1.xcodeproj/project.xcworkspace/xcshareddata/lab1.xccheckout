@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>44080923-C707-456D-A0F4-0D66875E2DD7</string>
 	<key>IDESourceControlProjectName</key>
-	<string>lab1</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>FE5A546622354C78CC99E3EA0D363D12069C77D1</key>
 		<string>https://github.com/sliponthis/CS341.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>lab1.xcodeproj</string>
+	<string>lab1.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>FE5A546622354C78CC99E3EA0D363D12069C77D1</key>
