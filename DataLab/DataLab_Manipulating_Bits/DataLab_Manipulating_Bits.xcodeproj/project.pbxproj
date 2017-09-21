@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413263311F74633300FA9837 /* bits.c in Sources */ = {isa = PBXBuildFile; fileRef = 413263301F74633300FA9837 /* bits.c */; };
 		41DE1E0C1F7460640015882A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 41DE1E0B1F7460640015882A /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		413263301F74633300FA9837 /* bits.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bits.c; sourceTree = "<group>"; };
+		413263321F74633A00FA9837 /* bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bits.h; sourceTree = "<group>"; };
 		41DE1E081F7460640015882A /* DataLab_Manipulating_Bits */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataLab_Manipulating_Bits; sourceTree = BUILT_PRODUCTS_DIR; };
 		41DE1E0B1F7460640015882A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				41DE1E0B1F7460640015882A /* main.c */,
+				413263321F74633A00FA9837 /* bits.h */,
+				413263301F74633300FA9837 /* bits.c */,
 			);
 			path = DataLab_Manipulating_Bits;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41DE1E0C1F7460640015882A /* main.c in Sources */,
+				413263311F74633300FA9837 /* bits.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +241,7 @@
 				41DE1E111F7460640015882A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
