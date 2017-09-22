@@ -172,7 +172,18 @@ NOTES:
  *   Rating: 1
  */
 int bitAnd(int x, int y) {
-  return 2;
+  /*
+   * With only ~ | as legal ops bitAnd accomplishes the 
+   * boolean bitwise and by the bitwise:
+   * 1. NEGATION of x and y to give xNeg, yNeg
+   * 2. OR of xNeg, yNeg stored in result
+   * 3. NEGATION of result
+   */
+  int xNeg, yNeg, result;
+  xNeg = ~x;
+  yNeg = ~y;
+  result = ~(xNeg | yNeg);
+  return result;
 }
 /* 
  * getByte - Extract byte n from word x
@@ -183,7 +194,16 @@ int bitAnd(int x, int y) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return 2;
+  /*
+   * For n = 0-3, getByte needs to shift x
+   * by n*8 bits. The shift is accomplished by
+   * left shfiting n by 3 bits. The result is
+   * obtained by masking desired shifted byte 
+   * by 0xff;
+   */
+  int shift = n << 3, result;
+  result = (x >> shift) & 0xff;
+  return result;
 }
 /* 
  * isAsciiDigit - return 1 if 0x30 <= x <= 0x39 (ASCII codes for characters '0' to '9')
@@ -195,7 +215,13 @@ int getByte(int x, int n) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  return 2;
+  int sOutLSBNibble = (x >> 4) << 4;
+  int anyBitsMoreSigThanx30Set = !(sOutLSBNibble ^ 0x30);
+  int highBit_LSNibble = !(x & 0x8);
+  int LSNibbleOutsideRange = (highBit_LSNibble | !(x & 0x6));
+  int result = anyBitsMoreSigThanx30Set & LSNibbleOutsideRange;
+  
+  return result;
 }
 /* 
  * logicalShift - shift x to the right by n, using a logical shift
