@@ -173,6 +173,7 @@ NOTES:
  */
 int bitAnd(int x, int y) {
   /*
+   * COMMENTS
    * With only ~ | as legal ops bitAnd accomplishes the 
    * boolean bitwise and by the bitwise:
    * 1. NEGATION of x and y to give xNeg, yNeg
@@ -195,6 +196,8 @@ int bitAnd(int x, int y) {
  */
 int getByte(int x, int n) {
   /*
+   * COMMENTS
+   *
    * For n = 0-3, getByte needs to shift x
    * by n*8 bits. The shift is accomplished by
    * left shfiting n by 3 bits. The result is
@@ -215,11 +218,24 @@ int getByte(int x, int n) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
+  /*
+   * COMMENTS
+   *
+   * 1. Shift out lowest nibble in least significant byte
+   
+   * 2. Determine if any bits greater than x30 are set
+   
+   * 3. Is the most signficant bit in the lower nibble set?
+   
+   * 4. LSNibbleOutsideRange determines if the least significant byte is between 0-9
+   
+   * 5. return the bitWise & of noBitsMoreSignThanx30set and LSNibbleOutsideRange
+   */
   int sOutLSBNibble = (x >> 4) << 4;
-  int anyBitsMoreSigThanx30Set = !(sOutLSBNibble ^ 0x30);
-  int highBit_LSNibble = !(x & 0x8);
-  int LSNibbleOutsideRange = (highBit_LSNibble | !(x & 0x6));
-  int result = anyBitsMoreSigThanx30Set & LSNibbleOutsideRange;
+  int noBitsMoreSigThanx30Set = !(sOutLSBNibble ^ 0x30);
+  int highBit_LSNibble_notSet = !(x & 0x8);
+  int LSNibbleOutsideRange = (highBit_LSNibble_notSet | !(x & 0x6));
+  int result = noBitsMoreSigThanx30Set & LSNibbleOutsideRange;
   
   return result;
 }
@@ -232,7 +248,19 @@ int isAsciiDigit(int x) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return 2;
+  /*
+   * COMMENTS
+   
+   * 1. Build a mask that will consist of n bits set to 0
+   * 
+   * 2. Shift x to the right by n and take bitwise & with mask
+   * 
+  * NOTE: the mask ensures that the negative #'s MS n bits
+   * will be set to 0 - this implements the logical shift
+   */
+  int mask = ((1 << 31) >> n) << 1;
+  int res = (x >> n) & ~mask;
+  return res;
 }
 /*
  * bitParity - returns 1 if x contains an odd number of 0's
@@ -242,7 +270,36 @@ int logicalShift(int x, int n) {
  *   Rating: 4
  */
 int bitParity(int x) {
-  return 2;
+  /*
+   * COMMENTS:
+   * RECURSIVE ALGORITHM
+   * 1. Shift x by 2^n-1 bits, where n is the iteration count
+   * and take bitwise ^ with input
+   * 
+   * 2. Each iteration uses the output from the previous step
+   * (recursive approach)
+   * 
+   * 3. Extract least significant bit in result; specifies parity
+   * Note: Initial approach was correct but required too many ops
+   
+   //initial approach
+  int mask_1 = 0x55, mask_2 = 0x33, mask_4 = 0x0f, mask_8 = 0xff, mask_16 = ~(~0x00 << 16);
+  int mask_1_n = 0xaa, mask_2_n = 0xcc, mask_4_n = 0xf0, mask_8_n = 0x00, mask_16_n = ~mask_16;
+  //printf("mask_16: %x\n", mask_16);
+  int mask1Bit = (x & mask_1) + ((x & mask_1_n) >> 1);
+  int mask2Bit = (mask1Bit & mask_2) + ((mask1Bit & mask_2_n) >> 2);
+  int mask4Bit = (mask2Bit & mask_4) + ((mask2Bit & mask_4_n) >> 4);
+  int mask8Bit = (mask4Bit & mask_8) + ((mask4Bit & mask_8_n) >> 8);
+  */
+  //printf("x: %x\n", x);
+  int sBy1Bit = (x >> 0x01) ^ x;
+  int sBy2Bit = (sBy1Bit >> 0x02) ^ sBy1Bit;
+  int sBy4Bit = (sBy2Bit >> 0x04) ^ sBy2Bit;
+  int sBy8Bit = (sBy4Bit >> 0x08) ^ sBy4Bit;
+  int sBy16Bit = (sBy8Bit >> 0x10) ^ sBy8Bit;
+  //printf("1Bit: %x, 2Bit: %x, 4Bit: %x, 8Bit: %x, 16Bit: %x\n", sBy1Bit, sBy2Bit, sBy4Bit, sBy8Bit, sBy16Bit);
+  int res = sBy16Bit & 0x01;
+  return res;
 }
 /* 
  * fitsBits - return 1 if x can be represented as an 
@@ -254,7 +311,40 @@ int bitParity(int x) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return 2;
+  /*
+   * COMMENTS
+   * 1. Shift out bits 31:(31-n); bits are irrelevant even
+   * if they are 0/1 (positive/negative integer)
+   * 
+   * 2. Take EXCLUSIVE OR btwn x & integer that results from
+   * bit shifts applied in 1
+   * 
+   * 3. IF x is a positive int, and is > 2^(n-1) - 1, then the
+   * shift will result in the n bits (31:(31-n) being set to 1;
+   * the EXCLUSIVE OR will result in a int != 0. Negating the 
+   * result will return 0, as expected.
+  */
+   
+  /*
+   //Code failed on first case because negating 0x80000000 results in 0x80000000
+   //Fails on 0x80000000 corner case
+  int negOne = ~0x0;
+  int shift = n + negOne;
+  int intMax = ~(negOne << shift);
+  int intMin = negOne << shift;
+  printf("intMax: %d, intMin: %d\n", intMax, intMin);
+  int xNegated = ~x+1;
+  printf("xNegated: %d", xNegated);
+  int diffMax = intMax  + xNegated;
+  int diffMin = intMin + xNegated;
+  printf("diffMax: %d, diffMin: %d\n", diffMax, diffMin);
+  int res = ((diffMax >> 31) & 0x1) | (~(diffMin >> 31) & 0x1 );
+  return res;
+   */
+  //printf("x: %x, n: %d ", x, n);
+  
+  int bitsToShiftOut = 32 + (~n + 1);
+  return !(x ^ ((x << bitsToShiftOut) >> bitsToShiftOut));
 }
 /* 
  * fitsShort - return 1 if x can be represented as a 
@@ -264,8 +354,13 @@ int fitsBits(int x, int n) {
  *   Max ops: 8
  *   Rating: 1
  */
-int fitsShort(int x) {
-  return 2;
+int fitsShort(int x){
+  /*
+   * COMMENTS
+   * SAME LOGIC AS fitsBits, except that in this
+   * implementation we know that n = 16
+   */
+  return !(x^((x << 16) >> 16));
 }
 /*
  * isTmin - returns 1 if x is the minimum, two's complement number,
@@ -275,7 +370,17 @@ int fitsShort(int x) {
  *   Rating: 1
  */
 int isTmin(int x) {
-  return 2;
+  /*
+   * COMMENTS
+   * IF x is min 2's complement #, then the 2's complement negation
+   * will results in the same value. Of course, 0x00 has this property,
+   * so a check is performed to make sure that x is not 0.
+   */
+  int twosComplementX = ~x + 1;
+  int logicalEquivalent = !(twosComplementX ^ x);
+  int isZero = !(x ^ 0x0);
+  int res = logicalEquivalent & !isZero;
+  return res;
 }
 /* 
  * leastBitPos - return a mask that marks the position of the
@@ -286,7 +391,16 @@ int isTmin(int x) {
  *   Rating: 2 
  */
 int leastBitPos(int x) {
-  return 2;
+  /*
+   * COMMENTS
+   * SIMPLE ALGORITHM: 
+   * 1. BIT WISE & btwn two's complement negated value
+   * of x and x will cancel out all bits except the least
+   * significant 1 bit.
+   */
+  int xNegated = ~x + 1;
+  int res = x & xNegated;
+  return res;
 }
 /* 
  * negate - return -x 
@@ -296,7 +410,13 @@ int leastBitPos(int x) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  /*
+   * COMMENTS
+   * SIMPLE ALGORITHM: Two's complement negation:
+   * 1. Negate each bit in x and then add 1 to determine -x
+   */
+  int negation = ~x + 1;
+  return negation;
 }
 /* 
  * isPositive - return 1 if x > 0, return 0 otherwise 
@@ -306,7 +426,17 @@ int negate(int x) {
  *   Rating: 3
  */
 int isPositive(int x) {
-  return 2;
+  /*
+   * COMMENTS
+   * SIMPLE ALGORITHM: Check MSB to determine if x is
+   * a neg/pos number. Then ensure that x is also not 
+   * 0 since 0x00 has the property of also having a 0
+   * in the most significant bit location.
+   */
+  int unSigned = !((x >> 31) & 0x01);
+  int zero = !(x ^ 0x00);
+  int res = unSigned & !zero;
+  return res;
 }
 /* 
  * subOK - Determine if can compute x-y without overflow
@@ -317,7 +447,32 @@ int isPositive(int x) {
  *   Rating: 3
  */
 int subOK(int x, int y) {
-  return 2;
+  /*
+   * COMMENTS
+   * 1. Determine if x and y are negative ints (inspect 
+   * most significant bit) 
+   
+   * 2. 2's complement negation of y
+   
+   * 3. Compute x - y and determine sign bit of difference
+   
+   * 4. Boolean logic to determine if sub doesn't result in
+   * overflow
+   
+   * OVERFLOW:
+   * x[31] y[31] diff[31]
+   *   1     0     0 (neg # subtracted by pos # should result in + diff)
+   *   0     1     1 (pos # subtracted by neg # should result in + diff)
+   */
+  int signBitX = (x >> 31) & 0x01;
+  int signBitY = (y >> 31) & 0x01;
+  int negateY = ~y + 1;
+  int diff = x + negateY;
+  int signBitDiff = (diff >> 31) & 0x01;
+  int res = !((!signBitX & signBitY & signBitDiff) | (signBitX & !signBitY & !signBitDiff));
+  //printf("x: %x, y: %x, diff: %x ", x, y, diff);
+  //printf("signBitX: %d, signBitY: %d, signBitDiff: %d, res: %d\n",signBitX, signBitY, signBitDiff,res);
+  return res;
 }
 /* 
  * float_abs - Return bit-level equivalent of absolute value of f for
