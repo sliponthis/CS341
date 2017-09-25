@@ -486,7 +486,31 @@ int subOK(int x, int y) {
  *   Rating: 2
  */
 unsigned float_abs(unsigned uf) {
-  return 2;
+  /*
+   * COMMENTS
+   * A single-precision floating point number has the following properties;
+   
+   * 1. The first bit is the sign of the number
+   
+   * 2. Bits 30-23 are the value of the exponent field, which is used in
+   * conjunction with the bias (2^(k-1) - 1) to compute the value of E;
+   
+   * 3. Next 23 bits (22-0) represent the mantissa (fractional value).
+   
+   * 4. Value of the single-precision floating point number is 2^E*M*(-1)^s
+   
+   * Given these properites, masks were set up to determine if uf was NaN.
+   * If it is, the value is returned. If it isn't, then the sign bit is masked
+   * and the number is returned.
+   */
+  
+  unsigned fractionalMask = 0x7fffff, signMask = 0x7fffffff, eMask = 0x7f800000;
+  unsigned exponentBits_allSet = !((uf & eMask) ^ eMask);
+  unsigned fractionalBitSet = (uf & fractionalMask);
+  
+  if (exponentBits_allSet && fractionalBitSet) return uf;
+  else return (uf & signMask);
+
 }
 /*
  * ezThreeFourths - multiplies by 3/4 rounding toward 0,
@@ -500,7 +524,32 @@ unsigned float_abs(unsigned uf) {
  *   Rating: 3
  */
 int ezThreeFourths(int x) {
-  return 2;
+  /*
+   * COMMENTS
+   * SOLVED PROBLEM BY LOOKING AT TEST CASES PROVDED BY BTEST
+   
+   * 1. Mutiplying by 3/4 is the same as initially muiltpying by 3
+   * Do this by applying a 1 bit shift to the left on x and then 
+   * adding x to the shifted result. Knew that shifting back to the
+   * right by two bits would divide by 4, but I ended up with errors
+   * in the least signficant two bits. The most significat bist were
+   * alwasy correct.
+   
+   * CORRECTING LEAST SIGNIFICANT BITS
+   * 2. Shift sign bit over 31 bits; if number is signed, this will 
+   * arithmeitcally shift the sign bit into bits 31-1. 
+   
+   * 3. Bit & this result with a 0x03 mask and add it to the product.
+   * The purpose of this is that the least signficant bits were being
+   * lost by the division (shifting out the lowest two bits). ONLY REALIZED
+   * BY LOOKING AT THE TEST CASES!
+   */
+  int product = (x << 1) + x;
+  int mask = 0x03;;
+  int signBitOfMultipliedTerm = product >> 31;
+  int b = mask & signBitOfMultipliedTerm;
+  int quotient = (product + b) >> 2;
+  return quotient;
 }
 /*
  * trueThreeFourths - multiplies by 3/4 rounding toward 0,

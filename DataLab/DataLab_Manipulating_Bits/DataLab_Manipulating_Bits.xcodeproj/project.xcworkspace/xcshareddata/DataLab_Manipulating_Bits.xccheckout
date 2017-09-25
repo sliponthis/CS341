@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>A7F43FAB-F1E0-4B4D-9ED8-C5D499446F33</string>
 	<key>IDESourceControlProjectName</key>
-	<string>DataLab_Manipulating_Bits</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>FE5A546622354C78CC99E3EA0D363D12069C77D1</key>
 		<string>https://github.com/sliponthis/CS341.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>DataLab/DataLab_Manipulating_Bits/DataLab_Manipulating_Bits.xcodeproj</string>
+	<string>DataLab/DataLab_Manipulating_Bits/DataLab_Manipulating_Bits.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>FE5A546622354C78CC99E3EA0D363D12069C77D1</key>
